@@ -29,7 +29,7 @@ route{
 	# absorb retransmissions, but do not create transaction
 	t_check_trans();
 
-	if ( !(is_method("REGISTER")  ) ) {
+	if ( !(is_method("REGISTER")) ) {
 		
 		if (is_myself("$fd")) {
 					
@@ -37,7 +37,8 @@ route{
 			# if caller is not local, then called number must be local
 			
 			if (!is_myself("$rd")) {
-				send_reply(403,"Relay Forbidden");
+				send_reply(E_FORBIDDEN_CODE,"E_FORBIDDEN_DESC");
+				X_ERR(X_BAN_IP);
 				exit;
 			}
 		}
@@ -46,10 +47,10 @@ route{
 
 	# preloaded route checking
 	if (loose_route()) {
-		xlog("L_ERR",
-			"Attempt to route with preloaded Route's [$fu/$tu/$ru/$ci]");
+		X_LOG(preload route)
+
 		if (!is_method("ACK"))
-			send_reply(403,"Preload Route denied");
+			send_reply(E_FORBIDDEN_CODE,"E_FORBIDDEN_DESC");
 		exit;
 	}
 
@@ -72,10 +73,7 @@ route{
 
 	# requests for my domain
 	
-	if (is_method("PUBLISH|SUBSCRIBE")) {
-		send_reply(503, "Service Unavailable");
-		exit;
-	}
+
 
 	if (is_method("REGISTER")) {
 		# store the registration and generate a SIP reply

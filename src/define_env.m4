@@ -4,6 +4,11 @@ m4_define(<<my_listen_ip>>, m4_esyscmd(<<printf "${my_listen_ip:-127.0.0.1}">>))
 
 m4_define(<<my_udp_tcp_port>>, m4_esyscmd(<<printf "${my_udp_tcp_port:-5060}">>))
 
+# 主域名
+m4_define(<<my_domain_main>>, m4_esyscmd(<<printf "${my_domain_main}">>))
+# 备域名
+m4_define(<<my_domain_backup>>, m4_esyscmd(<<printf "${my_domain_backup}">>))
+
 #-3 - Alert level
 #-2 - Critical level
 #-1 - Error level
