@@ -1,2 +1,2 @@
-my_listen_ip=127.0.0.1
-my_domain_main=openvos.test
+ENV_LISTEN_IP=127.0.0.1
+ENV_DOMAIN_MAIN=openvos.test

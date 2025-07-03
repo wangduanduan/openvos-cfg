@@ -1,20 +1,20 @@
 #debug_mode=yes
-log_level=my_log_level
-xlog_level=my_xlog_level
+log_level=ENV_LOG_LEVEL
+xlog_level=ENV_XLOG_LEVEL
 stderror_enabled=yes
 syslog_enabled=yes
 syslog_facility=LOG_LOCAL0
-syslog_name="openvos-init my_version"
-log_prefix = "my_version"
+syslog_name="openvos-init ENV_VERSION"
+log_prefix = "ENV_VERSION"
 
-m4_ifelse(my_domain_main,,,
-alias=udp:my_domain_main
-alias=tcp:my_domain_main
+m4_ifelse(ENV_DOMAIN_MAIN,,,
+alias=udp:ENV_DOMAIN_MAIN
+alias=tcp:ENV_DOMAIN_MAIN
 )
 
 m4_ifelse(my_domain_backup,,,
-alias=udp:my_domain_backup
-alias=tcp:my_domain_backup
+alias=udp:ENV_DOMAIN_BACKUP
+alias=tcp:ENV_DOMAIN_BACKUP
 )
 
 
@@ -32,9 +32,9 @@ tcp_keepcount = 5
 
 udp_workers=4
 
-user_agent_header="User-Agent: OpenVOS my_version"
-server_header="Server: OpenVOS my_version"
+user_agent_header="User-Agent: OpenVOS ENV_VERSION"
+server_header="Server: OpenVOS ENV_VERSION"
 server_signature=no
 
-socket=udp:my_listen_ip:my_udp_tcp_port
-socket=tcp:my_listen_ip:my_udp_tcp_port
+socket=udp:ENV_LISTEN_IP:ENV_UDP_TCP_PORT
+socket=tcp:ENV_LISTEN_IP:ENV_UDP_TCP_PORT

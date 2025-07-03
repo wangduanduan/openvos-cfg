@@ -20,3 +20,8 @@ run: cfg
 
 exec:
 	docker exec -it ops bash
+
+push:
+	git add -A;
+	git commit -am "wip"
+	git push

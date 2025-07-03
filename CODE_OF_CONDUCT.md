@@ -12,10 +12,10 @@ m4_include(<<src/modules.m4>>)m4_dnl
 m4_define(<<E_LOOPED_CODE>>,<<483>>)
 ```
 
-3. 自定义环境变量需要 my_ 开头
+3. 自定义环境变量需要 ENV_ 开头, 并且需要全部大写
 
 ```
-m4_define(<<my_listen_ip>>, m4_esyscmd(<<printf "${my_listen_ip:-127.0.0.1}">>))
+m4_define(<<ENV_LISTEN_IP>>, m4_esyscmd(<<printf "${ENV_LISTEN_IP:-127.0.0.1}">>))
 ```
 
 4. 日志打印用X_INFO, X_ERR, X_WARN, X_NOTICE 宏
